@@ -1,11 +1,14 @@
-//<h1 class="title">Todo List</h1> render
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles.css'
 
+const rootElement = document.querySelector('#root');
 
-ReactDOM.render(
-  <h1 className="title">Todo List</h1>,
-  document.getElementById('root')
-);
+const element = (
+  <div className="greeting">
+    <h1 className="greeting__title">Hello, world!</h1>
+    <p className="greeting__text">I'm learning React</p>
+  </div>
+)
+
+ReactDOM.render(element, rootElement)

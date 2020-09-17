@@ -1,15 +1,11 @@
-import React from 'react';
-import UserAvatar from './Avatar';
+import React from "react";
+import Avatar from "./Avatar";
 
-import 'userinfo.scss';
-
-const UserInfo = (props) => {
+const UserInfo = props => {
   return (
     <div className="user-info">
-      <UserAvatar name={props.user.name} avatarUrl={props.user.avatarUrl} />
-      <div className="user-info__name">
-        {props.user.name}
-      </div>
+      <Avatar avatarUrl={props.user.avatarUrl} name={props.user.name} />
+      <div className="user-info__name">{props.user.name}</div>
     </div>
   );
 };

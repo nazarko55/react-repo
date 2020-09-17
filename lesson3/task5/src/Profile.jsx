@@ -4,7 +4,7 @@ import "./profile.scss"
 
 const Profile = (props) => {
   const birthDate = moment(new Date(props.userData.birthDate))
-    .format("DD MMM YYYY");;
+    .format("DD MMM YY");;
   return (
     <div className="profile">
       <div className="profile__name">

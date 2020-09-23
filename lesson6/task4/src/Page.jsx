@@ -5,7 +5,7 @@ import Message from './Message';
 // output string
 
 const text1 = 'Hello, world!';
-const text2 = 'Another exciting text';
+const text2 = 'Another exciting text.';
 
 
 class Page extends Component {
@@ -29,9 +29,12 @@ class Page extends Component {
       <div className='page'>
         <Message text={this.state.text} />
         <div className="actions">
-          <button className="btn" onClick={() => this.setText(text1)}>Text 1</button>
-          <button className="btn" onClick={() => this.setText(text2)}>Text 2</button>
-          <button className="btn" onClick={() => this.setText(null)}> Clear </button>
+          <button className="btn"
+            onClick={() => this.setText(text1)}>Text 1</button>
+          <button className="btn"
+            onClick={() => this.setText(text2)}>Text 2</button>
+          <button className="btn"
+            onClick={() => this.setText(null)}> Clear </button>
         </div>
       </div>
     );

@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
 
-const NumberList = ({ numbers }) => {
-
+const NumbersList = ({ numbers }) => {
+  const listElems = numbers.map(num => <li>{num}</li>)
   return (
     <ul>
-      {numbers.map(num => (
-        <li key={num}>{num}</li>
-      ))}
+      {listElems}
     </ul>
   )
-};
+}
 
-export default NumberList;
+export default NumbersList;

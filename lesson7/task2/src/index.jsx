@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import UserList from './UserList';
 
+
 const rootElem = document.querySelector("#root");
 
 const users = [
@@ -14,7 +15,7 @@ const users = [
   {
     id: 'id-1',
     age: 17,
-    name: 'Tom',
+    name: 'Bob',
   },
   {
     id: 'id-2',

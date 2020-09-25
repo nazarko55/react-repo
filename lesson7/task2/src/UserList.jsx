@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import User from './User';
 
-const UserList = ({ users }) => {
-  return (
-    <ul className="users">
-      {users.map(user => {
-        <li className="user">
-          <span className="user__name">{user.name}</span>
-          <span className="user__age">{user.age}</span>
-        </li>
-      })}
-    </ul>
-  )
+class UserList extends Component {
+  state = {
+    sorting: null,
+  };
+
+  toggleSorting = () => {
+    const newSorting = this.state.sorting === 'asc'
+      ? 'desc'
+      : 'asc';
+    this.setState({
+      sorting: newSorting
+    })
+  }
+  render() {
+    console.log(this.props.users);
+    let usersList;
+    if (this.state.sorting) {
+
+      usersList = [...this.props.users]
+        .sort((a, b) => this.state.sorting === 'asc'
+          ? (a.age - b.age)
+          : (b.age - a.age))
+    } else {
+      usersList = [...this.props.users];
+    }
+    console.log(usersList);
+    return (
+      <div>
+        <button className="btn"
+          onClick={this.toggleSorting}>{
+            (this.state.sorting || '-')
+          }</button>
+
+        <ul className="users">
+          {usersList.map(user => (
+            <User key={user.id} {...user} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default UserList;

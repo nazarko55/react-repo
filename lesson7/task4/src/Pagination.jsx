@@ -1,36 +1,31 @@
-import React from 'react';
+import React from "react";
 
-// input function
-// output function
-const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPage }) => {
-  let isPrevPageAvailable = false; //по дефолту кнопки не активны
+const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) => {
+  let isPrevPageAvailable = false;
   let isNextPageAvailable = false;
 
-  const pagesQuantity = Math.ceil(totalItems / itemsPage);
+  const pagesQuantity = Math.ceil(totalItems / itemsPerPage);
 
-  if (currentPage === 0) { // активируем кнопку 
+  if (currentPage === 0) {
     isPrevPageAvailable = true;
   }
 
-  if (currentPage === pagesQuantity - 1) { // активируем кнопку 
+  if (currentPage === pagesQuantity - 1) {
     isNextPageAvailable = true;
   }
-
+  // debugger;
   return (
-    // отображаем две кнопки вперед назад и текущую страницу
     <div className="pagination">
       <button className="btn"
         disabled={isPrevPageAvailable}
         onClick={goPrev}>{isPrevPageAvailable ? '' : '←'}</button>
-
-      <span className="pagination-page">{currentPage + 1}</span>
-
+      <span className="pagination__page">{currentPage + 1}</span>
       <button className="btn"
         disabled={isNextPageAvailable}
-        onClick={goNext}>{isNextPageAvailable ? '' : '→'}
-      </button>
+        onClick={goNext}>{isNextPageAvailable ? '' : '→'}</button>
     </div>
   )
 }
+
 
 export default Pagination;

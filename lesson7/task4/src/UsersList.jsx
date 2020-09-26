@@ -18,7 +18,7 @@ class UsersList extends React.Component {
     this.setState({
       currentPage: this.state.currentPage + 1
     })
-    // debugger;
+
   };
 
   render() {
@@ -30,6 +30,7 @@ class UsersList extends React.Component {
       .slice(firstIndex, lastindex);
     // debugger;
     if (currentPageList.length !== 0) {
+      //отрисовка кнопок, отрисовка списка user
       return (
         <div>
           <Pagination goPrev={this.getPrevPage}
@@ -41,6 +42,7 @@ class UsersList extends React.Component {
           <ul className="users">
             {currentPageList.map(
               user =>
+
                 <User key={user.id}  {...user}
                 />
             )}

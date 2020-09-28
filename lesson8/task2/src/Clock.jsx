@@ -1,40 +1,42 @@
-import React, { Component } from 'react';
+
+import React from "react";
 import moment from 'moment';
 
+const getTimeWithOffset = offset => {
+  const currentTime = new Date();
+  const utcOffset = currentTime.getTimezoneOffset() / 60;
+  return new Date(currentTime.setHours(currentTime.getHours() + offset + utcOffset));
+};
 
-const setOffset = (offset) => {
-  return moment()
-    .utcOffset(offset)
-    .format("h:mm:ss a")
-}
+const formatDate = date => moment(date).format('h:mm:ss A')
 
-
-class Clock extends Component {
-
-  constructor(props) {
-    super(props) //инициализация нашего компонента
+class Clock extends React.Component {
+  constructor(props) { //инициализация нашего компонента
+    super(props);
     this.state = {
-      time: setOffset(this.props.offset),
-    };
+      time: formatDate(getTimeWithOffset(this.props.offset))
+    }
   }
+
   componentDidMount() { //вызываем после рендеринга компонента
-    this.intervalId = setInterval(() => {
-      this.setState({
-        time: setOffset(this.props.offset),
-      });
-    }, 1000)
+    this.interval = setInterval(() => this.setState({
+      time: formatDate(getTimeWithOffset(this.props.offset))
+    }), 1000)
   }
 
   componentWillUnmount() { //вызываем перед удалением компонента из DOM
-    clearInterval(this.intervalId);
+    clearInterval(this.interval)
   }
 
-
-  render() {   // рендер времени и места
+  render() {  // рендер времени и места
     return (
-      <div className="clock">
-        <div className="clock_location">{this.props.location}</div>
-        <div className="clock__time">{this.state.time}</div>
+      <div className="clock" >
+        <div className="clock__location">
+          {this.props.location}
+        </div>
+        <div className="clock__time">
+          {this.state.time}
+        </div>
       </div>
     )
   }

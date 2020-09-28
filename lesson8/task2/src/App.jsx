@@ -12,7 +12,7 @@ class App extends React.Component {
     })
 
   }
-  render() {
+  render() { // смещение по времени этого города относительно нулевого меридиана в свойстве offset и отрисовуем часы
     return ( //отрисовка трех компонент для каждого города
       <div className="worltime">
         <button onClick={this.toggle}>Toggle</button>

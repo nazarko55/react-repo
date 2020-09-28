@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from "react";
 
 class Dimensions extends React.Component {
   constructor(props) {
@@ -10,42 +10,36 @@ class Dimensions extends React.Component {
   }
 
   componentDidMount() {
-    const { innerHeight, innerWidth } = window;
-
-    this.setDimensions(innerWidth, innerHeight)
-    window.addEventListener('resize', this.onResize);
-  }
-
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
-  }
-
-
-  onResize = () => {
     const { innerWidth, innerHeight } = window;
 
-    this.setDimensions(innerHeight, innerWidth)
+    this.setDimensions(innerWidth, innerHeight);
+    window.addEventListener('resize', this.onRenderSize)
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onRenderSize)
+  }
+
+  onRenderSize = () => {
+    const { innerWidth, innerHeight } = window;
+
+    this.setDimensions(innerWidth, innerHeight)
   }
 
   setDimensions = (width, height) => {
     this.setState({
       width,
-      height,
+      height
     });
-    document.title = `${width} x ${height}`;
+    document.title = `${width} x ${height}`
   }
 
   render() {
     const { width, height } = this.state;
-
     return (
-      <div className="dimensions"> {`${width}px - ${height}px`}
-      </div>
+      <div className="dimensions">{`${width}px - ${height}px`}</div>
     )
   }
 }
-
 
 export default Dimensions;

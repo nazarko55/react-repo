@@ -12,6 +12,10 @@ class Auth extends React.Component {
     }
   }
 
+  // algo
+  //1. hide login
+  //2. show spinner for 2 sec
+  //3.hide spinner && show logout
   handleLogin = () => {
     this.setState({
       infoSpinner: true
@@ -34,19 +38,21 @@ class Auth extends React.Component {
   }
 
   render() {
-    const loginBtn = !this.state.infoSpinner && <Login onLogin={this.handleLogin} />;
-
-    const button = this.state.isLoggedIn ? <Logout onLogout={this.handleLogout} /> : loginBtn;
-
-    const spinner = this.state.infoSpinner && <Spinner size={50} />;
-
-    return (
-      <>
-        {button}
-        {spinner}
-      </>
-    );
+    const { isLoggedIn, isLoading } = this.state;
+    if (isLoading) {
+      return <Spinner size={60} />
+    }
+    if (isLoggedIn) {
+      return <Logout onLogout={this.logoutHandler} />
+    }
+    return <Login onLogin={this.loginHandler} />;
+    // return (
+    //   <>
+    //     { !isLoggedIn && !isLoading && <Login onLogin={this.loginHandler} />}
+    //     { isLoggedIn && <Logout onLogout={this.logoutHandler} />}
+    //     { isLoading && <Spinner />}
+    //   </>
+    // )
   }
-
 }
 export default Auth;

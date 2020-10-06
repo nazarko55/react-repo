@@ -5,10 +5,10 @@ import TemperatureInput from './TemperatureInput';
 class Calculator extends Component {
   state = {
     temperature: '',
-    scale: ''
+    scale: 'c'
   }
 
-  handleChangeCelsiy = (temperature) => {
+  handleCelsiusChange = (temperature) => {
     this.setState({
       scale: 'c',
       temperature
@@ -21,6 +21,7 @@ class Calculator extends Component {
       temperature
     })
   };
+
   render() {
     const scale = this.state.scale;
     const temperature = this.state.temperature;
@@ -36,12 +37,12 @@ class Calculator extends Component {
         <TemperatureInput
           scale="c"
           temperature={celsius}
-          onTemperatureChannge={this.handleChangeCelsiy}
+          onTemperatureChange={this.handleCelsiusChange}
         />
         <TemperatureInput
-          scale='f'
+          scale="f"
           temperature={fahrenheit}
-          onTemperatureChannge={this.handleFahrenheitChange}
+          onTemperatureChange={this.handleFahrenheitChange}
         />
         <BoilingVerdict
           celsius={parseFloat(celsius)} />
@@ -51,7 +52,7 @@ class Calculator extends Component {
   }
 };
 
-const tryConvert = (temperature, convert) => {
+function tryConvert(temperature, convert) {
   const input = parseFloat(temperature);
   if (Number.isNaN(input)) {
     return '';
@@ -61,11 +62,11 @@ const tryConvert = (temperature, convert) => {
   return rounded.toString();
 }
 
-const toCelsius = (fahrenheit) => {
+function toCelsius(fahrenheit) {
   return (fahrenheit - 32) * 5 / 9;
 }
 
-const toFahrenheit = (celsius) => {
+function toFahrenheit(celsius) {
   return (celsius * 9 / 5) + 32;
 }
 

@@ -5,13 +5,13 @@ const scaleNames = {
   f: 'Fahrenheit'
 };
 
-const TemperatureInput = ({ onTemperatureChannge, temperature, scale }) => {
+const TemperatureInput = ({ onTemperatureChange, temperature, scale }) => {
   return (
     <fieldset>
-      <legend>Enter temperature in {scaleNames[scale]};
-      </legend>
-      <input type="" value={temperature}
-        onChange={(e) => onTemperatureChannge(e.target.value)} />
+      <legend>Enter temperature in {scaleNames[scale]}:
+        </legend>
+      <input value={temperature}
+        onChange={(e) => onTemperatureChange(e.target.value)} />
     </fieldset>
   )
 };

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const BoillingVerdict = ({ celsius }) => {
+const BoilingVerdict = ({ celsius }) => {
   return (celsius >= 100)
-    ? <p>The water would boil</p>
-    : <p>The water would not boil</p>;
+    ? <p>The water would boil.</p>
+    : <p>The water would not boil.</p>;
 }
 
-export default BoillingVerdict;
+export default BoilingVerdict;

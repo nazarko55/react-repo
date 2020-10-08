@@ -5,20 +5,20 @@ import ProductTable from './ProductTable';
 class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { // начальное состояние
       filterText: '',
-      inStockOnly: false
+      inStockOnly: true
     }
   }
 
   handleFilterTextChange = (filterText) => {
-    this.setState({
+    this.setState({ // меняем состояние с фильтрацией 
       filterText: filterText
     });
   }
 
   handleInStockChange = (inStockOnly) => {
-    this.setState({
+    this.setState({ // меняем состояние товаров которые есть в наличии
       inStockOnly: inStockOnly
     })
   }
@@ -26,7 +26,7 @@ class FilterableProductTable extends React.Component {
   render() {
     const { filterText, inStockOnly } = this.state;
 
-    return (
+    return ( // рендерим компоненту SearchBar и ProductTable с фильтрацией и товарами которые есть в наличии а также методы  
       <div>
         <SearchBar
           filterText={filterText}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductCategoryRow = ({ category }) => {
-  return (
+  return ( // отрисовка данных в 2 колонки
     <tr>
       <th colSpan="2">
         {category}

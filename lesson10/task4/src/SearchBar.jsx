@@ -13,7 +13,7 @@ const SearchBar = ({ filterText, onFilterTextChange, onInStockChange, inStockOnl
         <input
           type="checkbox"
           checked={inStockOnly}
-          onChange={(e) => onInStockChange(e.target.value)} // если пользователь активирует чекбокс мы показываем только товары в наличии
+          onChange={(e) => onInStockChange(e.target.checked)} // если пользователь активирует чекбокс мы показываем только товары в наличии
         />
         {"  "}
         Only show products in stock

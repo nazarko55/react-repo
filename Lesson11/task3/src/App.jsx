@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Expand from './Expand';
+
 
 class Page extends React.Component {
   state = {
-    isOpen: false,
+    isOpen: false
   };
 
   toggleDialog = () => {
@@ -27,8 +28,8 @@ class Page extends React.Component {
           {element}
         </Expand>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Page;

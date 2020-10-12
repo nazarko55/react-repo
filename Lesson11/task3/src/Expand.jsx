@@ -1,40 +1,46 @@
-import React from "react";
-import PropTypes from "prop-types";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Expand = ({ isOpen, children, title, onClose }) => {
-  let content = isOpen
-    ? <div className="expand__content">{children}</div>
-    : null;
+class Expand extends React.PureComponent {
+  state = {
+    isVisibleContent: false
+  }
 
+  toggleVisibleContent = () => this.setState({
+    isVisibleContent: !this.state.isVisibleContent
+  })
 
-  return (
-    <div className="expand border">
-      <div className="expand__header">
-        <span className="expand__title">{title}</span>
-        <button className="expand__toggle-btn" onClick={onClose}>
-          {isOpen ? <i class="fas fa-chevron-up">∧</i>
-            : <i class="fas fa-chevron-down">∨</i>}
-          {/* {isOpen ? <FontAwesomeIcon icon={faChevronUp} />
-            : <FontAwesomeIcon icon={faChevronDown} />} */}
-        </button>
+  render() {
+    const { children, title } = this.props;
+    const { isVisibleContent } = this.state;
+    const arrows = isVisibleContent
+      ? (<i className="fas fa-chevron-up" />)
+      : (<i className="fas fa-chevron-down" />)
+    debugger
+    return (
+      <div className="expand border">
+        <div className="expand__header">
+          <span className="expand__title">{title}</span>
+          <button className="expand__toggle-btn" onClick={this.toggleVisibleContent}>
+
+            {arrows}
+          </button>
+        </div>
+        <div className="expand__content">
+          {isVisibleContent ? children : null}
+        </div>
       </div>
-      {content}
-    </div>
-  );
-};
+    )
+  }
+}
 
 Expand.propTypes = {
-  isOpen: PropTypes.bool,
   children: PropTypes.element.isRequired,
   title: PropTypes.string,
-  onClose: PropTypes.func.isRequired
-};
+}
 
 Expand.defaultProps = {
-  isOpen: false,
-  title: ""
-};
+  title: 'SOME TITLE'
+}
 
-export default Expand;
+export default Expand

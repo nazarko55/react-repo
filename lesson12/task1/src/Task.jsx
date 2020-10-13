@@ -2,24 +2,21 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const Task = ({ done, text, id, onToggleTask, onDelete }) => {
-  const listItemClasses = classNames('list-item', { 'list-item_done': done });
+const Task = ({ id, done, text, onToggleTask, onDelete }) => {
   return (
-    <li className={listItemClasses}>
+    <li className={classNames('list-item', { 'list-item_done': done })}>
       <input
         onClick={() => onToggleTask(id)}
         defaultChecked={done}
         type="checkbox"
-        className="list-item__checkbox"
-      />
+        className="list-item__checkbox" />
       <span className="list-item__text">{text}</span>
       <button
-        className="list-item__delete-btn" onClick={() => onDelete(id)}>
-
-      </button>
+        onClick={() => onDelete(id)}
+        className="list-item__delete-btn" />
     </li>
-  )
-}
+  );
+};
 
 Task.propTypes = {
   id: PropTypes.string.isRequired,

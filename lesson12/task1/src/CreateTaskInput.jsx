@@ -1,46 +1,42 @@
-import React, { Component } from 'react';
+import React from "react";
 import PropTypes from 'prop-types';
 
-class CreateTask extends Component {
+class CreateTask extends React.Component {
   state = {
-    value: '',
+    value: ''
   }
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      value: event.target.value,
+      value: e.target.value
+    });
+  }
+
+  onCreateTask = () => {
+    this.props.createTask(this.state.value);
+    this.setState({
+      value: ''
     })
   }
 
-  handleTaskCreate = () => {
-    this.props.onCreate(this.state.value);
-    this.setState({ value: '' });
-  }
   render() {
     return (
       <div className="create-task">
-        <input
+        <input className="create-task__input"
           type="text"
-          value={this.state.value}
           onChange={this.handleChange}
-          className="create-task__input"
+          value={this.state.value}
         />
         <button className="btn create-task__btn"
           onClick={this.onCreateTask}
         >Create</button>
-
       </div>
-    )
+    );
   }
-}
+};
 
 CreateTask.propTypes = {
   createTask: PropTypes.func.isRequired
 };
 
-
 export default CreateTask;
-
-//1. text in input 
-//2. create task with this text 
-//3. Add created task to the list

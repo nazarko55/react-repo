@@ -41,7 +41,7 @@ class TasksList extends React.Component {
 
   handleTaskStatusChange = (id) => {
     const { done, text } = this.state.tasks
-      .map(task => task.id === id)
+      .find(task => task.id === id)
     const updatedTask = {
       text,
       done: !done

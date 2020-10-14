@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { useParams } from 'react-router-dom';
-
-const Product = () => {
-  const { productId } = useParams();
+const Product = ({ match }) => {
   return (
-    <div className="product">
-      {`Product is a ${productId}`}
-    </div>
+    <div className="product">{match.params.productId}</div>
   )
-};
+}
 
-export default Product;
+export default Product
